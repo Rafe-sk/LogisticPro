@@ -1,0 +1,64 @@
+.navLinksContainer {
+    display: none;
+    /* hidden */
+}
+
+@media (min-width: 768px) {
+
+    /* md:block */
+    .navLinksContainer {
+        display: block;
+    }
+}
+
+.navLinks {
+    display: flex;
+    /* flex */
+    align-items: center;
+    /* items-center */
+    gap: 2rem;
+    /* space-x-8 */
+}
+
+.navLink {
+    color: rgba(209, 213, 219, 1);
+    /* text-gray-300 */
+    text-decoration: none;
+    transition: color 0.2s;
+    /* hover effect */
+}
+
+.navLink:hover {
+    color: rgba(255, 255, 255, 1);
+    /* hover:text-white */
+}
+
+.contactButton {
+    background-color: rgba(234, 179, 8, 1);
+    /* bg-yellow-400 */
+    color: rgba(17, 24, 39, 1);
+    /* text-gray-900 */
+    padding: 0.5rem 1rem;
+    /* px-4 py-2 */
+    border-radius: 0.5rem;
+    /* rounded-lg */
+    font-weight: 500;
+    /* font-medium */
+    transition: background-color 0.2s;
+    /* hover effect */
+    border: none;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.contactButton:hover {
+    background-color: rgba(250, 204, 21, 1);
+    /* hover:bg-yellow-300 */
+}
+
+.contactButton:hover {
+    background-color: rgba(250, 204, 21, 1);
+    /* hover:bg-yellow-300 */
+}

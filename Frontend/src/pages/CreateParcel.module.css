@@ -1,0 +1,92 @@
+/* CreateParcel.module.css */
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: #111827;
+    color: white;
+    padding: 20px;
+    row-gap: 10px;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #fbbf24;
+    border-radius: 20px;
+    padding: 20px;
+    width: 80%;
+    max-width: 1200px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.form h2 {
+    color: #111827;
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+.label {
+    font-weight: 500;
+    font-size: 1rem;
+    margin-bottom: 10px;
+    color: #e5e7eb;
+}
+
+.input,
+.select,
+.textarea {
+    width: 100%;
+    padding: 10px 15px;
+    border: 2px solid #e5e7eb;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.9);
+    transition: border-color 0.3s ease, background-color 0.3s ease;
+    font-size: 1rem;
+    color: #1f2937;
+    margin-bottom: 20px;
+}
+
+.input:focus,
+.select:focus,
+.textarea:focus {
+    border-color: #fbbf24;
+    background-color: #fff;
+    outline: none;
+}
+
+.textarea {
+    height: 120px;
+    resize: none;
+}
+
+.checkbox {
+    margin-bottom: 20px;
+}
+
+.button {
+    display: inline-block;
+    padding: 10px 20px;
+    border-radius: 10px;
+    background: #fbbf24;
+    color: white;
+    font-weight: 600;
+    font-size: 1rem;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.button:hover {
+    background: #d97706;
+    transform: translateY(-2px);
+}
+
+@media screen and (max-width: 768px) {
+    .form {
+        width: 90%;
+    }
+}
