@@ -17,15 +17,7 @@ import {
     addDoc,
 } from "firebase/firestore";
 
-const firebaseConfig = {
-    apiKey: "AIzaSyB3pNHfUbkCPiOXv92bZH5ymnsJf8-di84",
-    authDomain: "logisticspro-b2f81.firebaseapp.com",
-    projectId: "logisticspro-b2f81",
-    storageBucket: "logisticspro-b2f81.firebasestorage.app",
-    messagingSenderId: "868407407017",
-    appId: "1:868407407017:web:b7687f341b0179549f94b8",
-    measurementId: "G-L9G3XFPRT2"
-}
+// Your Firebase Config
 
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
