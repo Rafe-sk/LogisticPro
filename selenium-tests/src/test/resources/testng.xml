@@ -1,0 +1,10 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="LogisticPro Auth Suite" verbose="2">
+
+    <test name="Auth Tests">
+        <classes>
+            <class name="com.logisticpro.AuthTest"/>
+        </classes>
+    </test>
+
+</suite>
