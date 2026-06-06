@@ -1,0 +1,34 @@
+.navbar {
+    position: fixed; /* fixed */
+    width: 100%; /* w-full */
+    top: 0;
+    z-index: 50; /* z-50 */
+    background-color: rgba(17, 24, 39, 0.95); /* Gray-900/95 */
+    backdrop-filter: blur(8px); /* backdrop-blur-sm */
+  }
+  
+  .container {
+    max-width: 1280px; /* max-w-7xl */
+    margin: 0 auto; /* mx-auto */
+    padding: 0 1rem; /* px-4 */
+  }
+  
+  @media (min-width: 640px) {
+    .container {
+      padding: 0 1.5rem; /* sm:px-6 */
+    }
+  }
+  
+  @media (min-width: 1024px) {
+    .container {
+      padding: 0 2rem; /* lg:px-8 */
+    }
+  }
+  
+  .inner {
+    display: flex; /* flex */
+    align-items: center; /* items-center */
+    justify-content: space-between; /* justify-between */
+    height: 4rem; /* h-16 */
+  }
+  

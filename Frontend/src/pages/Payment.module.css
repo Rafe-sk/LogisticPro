@@ -1,0 +1,98 @@
+/* Payment.module.css */
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    min-height: 100vh;
+    background-color: #111827;
+    color: white;
+}
+
+h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #fbbf24;
+}
+
+h3 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    color: #e5e7eb;
+}
+
+.orderDetails {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.paymentForm {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+    max-width: 400px;
+    background-color: #1f2937;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.label {
+    font-size: 1rem;
+    font-weight: 500;
+    margin-bottom: 10px;
+    color: #e5e7eb;
+}
+
+.input,
+.select {
+    width: 100%;
+    padding: 10px 15px;
+    margin-bottom: 20px;
+    border: 2px solid #e5e7eb;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.9);
+    color: #1f2937;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.input:focus,
+.select:focus {
+    border-color: #fbbf24;
+    background-color: #fff;
+    outline: none;
+}
+
+.button {
+    padding: 10px 20px;
+    border-radius: 10px;
+    background-color: #fbbf24;
+    color: #111827;
+    font-size: 1rem;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.button:hover {
+    background-color: #d97706;
+    transform: translateY(-2px);
+}
+
+@media screen and (max-width: 768px) {
+    .paymentForm {
+        width: 90%;
+    }
+
+    h2 {
+        font-size: 1.8rem;
+    }
+
+    h3 {
+        font-size: 1.4rem;
+    }
+}

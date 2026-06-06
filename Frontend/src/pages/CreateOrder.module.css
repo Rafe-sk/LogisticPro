@@ -1,0 +1,105 @@
+/* CreateOrder.module.css */
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: #111827;
+    color: white;
+    padding: 20px;
+}
+
+.address {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+    background-color: #fbbf24;
+    border-radius: 20px;
+    padding: 20px;
+    gap: 20px;
+    width: 80%;
+    max-width: 1200px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.pickupAddress,
+.deliveryAddress {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: flex-start;
+    background-color: #111827;
+    border-radius: 20px;
+    padding: 20px;
+    width: 45%;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    color: white;
+}
+
+.pickupAddress h2,
+.deliveryAddress h2 {
+    text-align: center;
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    color: #fbbf24;
+}
+
+.label {
+    font-weight: 500;
+    font-size: 1rem;
+    margin-bottom: 10px;
+    color: #e5e7eb;
+}
+
+.input {
+    width: 100%;
+    padding: 10px 15px;
+    border: 2px solid #e5e7eb;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.9);
+    transition: border-color 0.3s ease, background-color 0.3s ease;
+    font-size: 1rem;
+    color: #1f2937;
+    margin-bottom: 20px;
+}
+
+.input:focus {
+    border-color: #fbbf24;
+    background-color: #fff;
+    outline: none;
+}
+
+.button {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 10px 20px;
+    border-radius: 10px;
+    background: #fbbf24;
+    color: #111827;
+    font-weight: 600;
+    font-size: 1rem;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.button:hover {
+    background: #d97706;
+    transform: translateY(-2px);
+}
+
+@media screen and (max-width: 768px) {
+    .address {
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+        width: 90%;
+    }
+
+    .pickupAddress,
+    .deliveryAddress {
+        width: 100%;
+    }
+}

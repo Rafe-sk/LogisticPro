@@ -1,0 +1,135 @@
+/* Profile.module.css */
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #111827;
+    color: white;
+    padding: 20px;
+}
+
+.dashboardContainer {
+    background-color: #1f2937;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    max-width: 800px;
+    text-align: center;
+}
+
+.title {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #fbbf24;
+    margin-bottom: 20px;
+}
+
+/* Tabs navigation */
+.tabs {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.tab {
+    background-color: #1f2937;
+    color: #e5e7eb;
+    border: 2px solid transparent;
+    padding: 10px 20px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+    margin: 0 10px;
+}
+
+.tab:hover {
+    background-color: #374151;
+}
+
+.activeTab {
+    background-color: #fbbf24;
+    color: #1f2937;
+    border-color: #fbbf24;
+}
+
+/* Tab content */
+.tabContent {
+    margin-top: 20px;
+}
+
+.profile, .orders {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    background-color: #374151;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.profileDetails {
+    text-align: left;
+    width: 100%;
+    max-width: 600px;
+}
+
+.label {
+    font-size: 1rem;
+    font-weight: 500;
+    margin: 10px 0;
+    color: #e5e7eb;
+}
+
+.orders ul {
+    list-style-type: none;
+    padding: 0;
+    width: 100%;
+    max-width: 600px;
+}
+
+.orders li {
+    background-color: #1f2937;
+    padding: 15px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    color: #e5e7eb;
+    font-size: 1rem;
+}
+
+.orders li p {
+    margin: 5px 0;
+}
+
+/* Back link */
+.backLink {
+    display: inline-block;
+    margin-top: 20px;
+    font-size: 1rem;
+    color: #fbbf24;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.backLink:hover {
+    color: #ffd966;
+}
+
+.logOut{
+    background-color: #f87171;
+    color: white;
+    font-weight: bold;
+    font-size: 1rem;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 20px;
+    text-decoration: none;
+}
