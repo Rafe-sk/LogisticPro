@@ -72,3 +72,71 @@ export async function createUser(req, res) {
         return res.status(500).json({ message: "Some Problem" });
     }
 }
+
+// ── Request Password Reset ────────────────────────────────────────────────────
+export async function requestPasswordReset(req, res) {
+    const { email } = req.body;
+    if (!email) {
+        return res.status(400).json({ message: "Email is required" });
+    }
+
+    try {
+        const user = await userModel.findOne({ email });
+        if (!user) {
+            return res.status(404).json({ message: "User not found" });
+        }
+
+        // Generate reset token (6-digit code for simplicity)
+        const resetToken = Math.floor(100000 + Math.random() * 900000).toString();
+        const resetTokenExpiry = new Date(Date.now() + 15 * 60 * 1000); // 15 minutes
+
+        await userModel.findOneAndUpdate(
+            { email },
+            { $set: { resetToken, resetTokenExpiry } },
+            { new: true }
+        );
+
+        return res.status(200).json({ 
+            message: "Password reset email sent",
+            resetToken // In production, send via email instead
+        });
+    } catch (err) {
+        console.log(err);
+        return res.status(500).json({ message: "Failed to request password reset" });
+    }
+}
+
+// ── Reset Password ───────────────────────────────────────────────────────────
+export async function resetPassword(req, res) {
+    const { email, resetToken, newPassword } = req.body;
+    if (!email || !resetToken || !newPassword) {
+        return res.status(400).json({ message: "Email, reset token, and new password are required" });
+    }
+
+    try {
+        const user = await userModel.findOne({ email });
+        if (!user) {
+            return res.status(404).json({ message: "User not found" });
+        }
+
+        // Verify reset token and expiry
+        if (user.resetToken !== resetToken || !user.resetTokenExpiry || user.resetTokenExpiry < new Date()) {
+            return res.status(400).json({ message: "Invalid or expired reset token" });
+        }
+
+        // Hash new password
+        const hashedPassword = await bcrypt.hash(newPassword, 10);
+
+        // Update password and clear reset token
+        await userModel.findOneAndUpdate(
+            { email },
+            { $set: { password: hashedPassword, resetToken: null, resetTokenExpiry: null } },
+            { new: true }
+        );
+
+        return res.status(200).json({ message: "Password reset successfully" });
+    } catch (err) {
+        console.log(err);
+        return res.status(500).json({ message: "Failed to reset password" });
+    }
+}

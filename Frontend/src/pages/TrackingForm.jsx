@@ -11,10 +11,10 @@ function TrackingForm() {
     setOrderId(e.target.value)
   }
 
-  console.log(orderId)
-
   const handleTrack = () => {
-    navigate('/tracking')
+    if (orderId.trim()) {
+      navigate(`/tracking?id=${encodeURIComponent(orderId)}`)
+    }
   }
 
 

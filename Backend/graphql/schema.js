@@ -16,6 +16,13 @@ const typeDefs = gql`
         orderID: String!
     }
 
+    type OrderDetail {
+        orderId: String!
+        date: String!
+        status: String!
+        totalAmount: Float!
+    }
+
     enum ParcelType {
         document
         Box
@@ -48,6 +55,7 @@ const typeDefs = gql`
         getUser: [User]
         getUserByEmail(email: String!): User
         getOrder(userid: String!): Order
+        getOrdersByUser(userid: String!): [OrderDetail]
         getParcel(orderID: String!): Parcel
         getPayment(orderID: String!): Payment
     }

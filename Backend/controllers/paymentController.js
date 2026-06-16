@@ -8,7 +8,7 @@ const createPayment = async (req, res) => {
     }
     catch (err) {
         console.log(err);
-        return { message: "Some problem" };
+        return res.status(500).json({ message: "Some problem", error: err.message });
     }
 }
 
@@ -20,7 +20,7 @@ const getPayment = async (req, res) => {
     }
     catch (err) {
         console.log(err);
-        return { message: "Some problem" };
+        return res.status(500).json({ message: "Some problem", error: err.message });
     }
 }
 

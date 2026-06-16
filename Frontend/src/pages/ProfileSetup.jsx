@@ -18,6 +18,8 @@ function ProfileSetup() {
     pincode: '',
     state: ''
   })
+  const [loading, setLoading] = useState(false)
+  const [error, setError] = useState('')
 
   const navigate = useNavigate();
 
@@ -29,88 +31,111 @@ function ProfileSetup() {
   }
 
   const submitForm = async () => {
-    fetch('http://localhost:8000/user/create', {
+    const response = await fetch('http://localhost:8000/user/create', {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
+      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(form)
     })
-      .then((response) => {
-        if (response.status !== 201) {
-          console.log('There was an error')
-        } else {
-          return response.json()
-        }
-      })
-      .then((data) => {
-        console.log(data)
-      })
-      .catch((error) => {
-        console.log(error)
-      })
+    if (response.status !== 201) {
+      throw new Error('Failed to save profile')
+    }
+    return response.json()
+  }
+
+  const handleSubmit = async () => {
+    if (!form.name || !form.phone || !form.role) {
+      setError('Please fill in all required fields')
+      return
+    }
+    setError('')
+    setLoading(true)
+    try {
+      await submitForm()   // await before navigating
+      navigate('/home')
+    } catch (err) {
+      setError(err.message)
+    } finally {
+      setLoading(false)
+    }
   }
 
   return (
-    <>
-      <div className={styles.container}>
-        <form className={styles.form}>
-          <h2 className={styles.title}>Profile</h2>
+    <div className={styles.container}>
+      <form className={styles.form}>
+        <div className={styles.header}>
+          <div className={styles.avatar}>
+            {form.name ? form.name.charAt(0).toUpperCase() : '?'}
+          </div>
+          <h2 className={styles.title}>Complete Your Profile</h2>
+          <p className={styles.subtitle}>Help us personalize your experience</p>
+        </div>
+
+        {error && <div className={styles.errorBox}>⚠️ {error}</div>}
+
+        <div className={styles.section}>
+          <h3 className={styles.sectionTitle}>Personal Info</h3>
 
           <label className={styles.label}>
-            Name:
-            <input type="text" name='name' onChange={handleForm} className={styles.input} />
+            Full Name *
+            <input type="text" name='name' onChange={handleForm} className={styles.input} placeholder="John Doe" id="profile-name" />
           </label>
 
           <label className={styles.label}>
-            Email:
-            <input type="text" name='email' value={form.email} readOnly className={styles.input} />
+            Email Address
+            <input type="text" name='email' value={form.email} readOnly className={`${styles.input} ${styles.readOnly}`} />
           </label>
 
           <label className={styles.label}>
-            Phone:
-            <input type="text" name='phone' onChange={handleForm} className={styles.input} />
+            Phone Number *
+            <input type="tel" name='phone' onChange={handleForm} className={styles.input} placeholder="+91 98765 43210" id="profile-phone" />
           </label>
 
           <label className={styles.label}>
-            Role:
-            <select name="role" onChange={handleForm} className={styles.input}>
-              <option value="">Select Role</option>
-              <option value="user">User</option>
+            Role *
+            <select name="role" onChange={handleForm} className={styles.select} id="profile-role">
+              <option value="">Select your role</option>
+              <option value="user">User / Customer</option>
               <option value="delivery agent">Delivery Agent</option>
             </select>
           </label>
+        </div>
+
+        <div className={styles.section}>
+          <h3 className={styles.sectionTitle}>Address</h3>
 
           <label className={styles.label}>
-            Address:
-            <textarea name="address" className={styles.input} onChange={handleForm} rows={2} placeholder="Enter your full address" />
+            Street Address
+            <textarea name="address" className={styles.textarea} onChange={handleForm} rows={2} placeholder="Enter your full street address" id="profile-address" />
           </label>
 
           <div className={styles.inlineGroup}>
             <label className={styles.inlinelabel}>
-              City:
-              <input type="text" name="city" className={styles.input} onChange={handleForm} placeholder="Enter your city" />
+              City
+              <input type="text" name="city" className={styles.input} onChange={handleForm} placeholder="Mumbai" id="profile-city" />
             </label>
-
             <label className={styles.inlinelabel}>
-              Pincode:
-              <input type="text" name="pincode" className={styles.input} onChange={handleForm} placeholder="Enter your pincode" />
+              Pincode
+              <input type="text" name="pincode" className={styles.input} onChange={handleForm} placeholder="400001" id="profile-pincode" />
             </label>
           </div>
 
           <label className={styles.label}>
-            State:
-            <input type="text" name="state" className={styles.input} onChange={handleForm} placeholder="Enter your state" />
+            State
+            <input type="text" name="state" className={styles.input} onChange={handleForm} placeholder="Maharashtra" id="profile-state" />
           </label>
+        </div>
 
-          <button type="button" onClick={() => {
-            submitForm();
-            navigate('/home');
-          }} className={styles.button}>Submit</button>
-
-        </form>
-      </div>
-    </>
+        <button
+          type="button"
+          onClick={handleSubmit}
+          className={styles.button}
+          disabled={loading}
+          id="profile-submit"
+        >
+          {loading ? 'Saving…' : 'Save & Continue →'}
+        </button>
+      </form>
+    </div>
   )
 }
 

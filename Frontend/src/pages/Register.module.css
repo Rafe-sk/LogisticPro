@@ -1,90 +1,147 @@
-/* Register.module.css */
+/* Register.module.css — mirrors Login styles */
 .container {
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background-color: #111827;
-    color: white;
-    padding: 20px;
+    background:
+        radial-gradient(ellipse at 70% 30%, rgba(245, 158, 11, 0.08) 0%, transparent 60%),
+        radial-gradient(ellipse at 30% 80%, rgba(249, 115, 22, 0.05) 0%, transparent 50%),
+        var(--bg-primary);
+    padding: 2rem;
 }
 
 .form {
-    background-color: #1f2937;
-    padding: 30px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    background: var(--bg-card);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    padding: 2.5rem;
+    border-radius: var(--radius-xl);
+    border: 1px solid var(--border-subtle);
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255,255,255,0.05);
     width: 100%;
-    max-width: 400px;
+    max-width: 420px;
+    animation: slideUp 0.5s ease;
+}
+
+.logoArea {
     text-align: center;
+    margin-bottom: 2rem;
+}
+
+.appName {
+    font-size: 1.5rem;
+    font-weight: 800;
+    background: linear-gradient(135deg, var(--accent-bright), #f97316);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    letter-spacing: -0.02em;
 }
 
 .title {
-    font-size: 2rem;
-    font-weight: bold;
-    color: #fbbf24;
-    margin-bottom: 20px;
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 0.4rem;
+    letter-spacing: -0.02em;
+}
+
+.subtitle {
+    font-size: 0.875rem;
+    color: var(--text-muted);
+}
+
+.errorBox {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1rem;
+    background: rgba(239, 68, 68, 0.1);
+    border: 1px solid rgba(239, 68, 68, 0.3);
+    border-radius: var(--radius-sm);
+    color: #fca5a5;
+    font-size: 0.85rem;
+    margin-bottom: 1.25rem;
 }
 
 .label {
     display: block;
-    font-size: 1rem;
-    font-weight: 500;
-    margin: 15px 0 5px;
-    color: #e5e7eb;
-    text-align: left;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.5rem;
+    margin-top: 1.25rem;
 }
 
 .input {
     width: 100%;
-    padding: 10px;
-    margin-top: 5px;
-    border: 2px solid #e5e7eb;
-    border-radius: 5px;
-    background: rgba(255, 255, 255, 0.9);
-    color: #1f2937;
-    font-size: 1rem;
-    transition: border 0.3s ease;
+    padding: 0.75rem 1rem;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-sm);
+    color: var(--text-primary);
+    font-size: 0.95rem;
+    transition: border-color var(--transition), box-shadow var(--transition), background var(--transition);
 }
 
 .input:focus {
-    border-color: #fbbf24;
     outline: none;
-    box-shadow: 0 0 5px rgba(251, 191, 36, 0.5);
+    border-color: var(--border-focus);
+    background: rgba(245, 158, 11, 0.04);
+    box-shadow: 0 0 0 3px var(--accent-glow);
+}
+
+.input::placeholder {
+    color: var(--text-muted);
 }
 
 .button {
     width: 100%;
-    padding: 10px;
-    margin-top: 20px;
-    background-color: #fbbf24;
-    color: white;
-    font-weight: bold;
-    font-size: 1rem;
+    padding: 0.85rem;
+    margin-top: 1.75rem;
+    background: linear-gradient(135deg, var(--accent), #d97706);
+    color: #0a0f1e;
+    font-weight: 700;
+    font-size: 0.95rem;
     border: none;
-    border-radius: 5px;
+    border-radius: var(--radius-sm);
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: transform var(--transition), box-shadow var(--transition);
+    box-shadow: 0 4px 20px var(--accent-glow);
+    letter-spacing: 0.01em;
 }
 
 .button:hover {
-    background-color: #ffd966;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(245, 158, 11, 0.4);
+}
+
+.button:active {
+    transform: translateY(0);
 }
 
 .para {
-    margin-top: 20px;
-    font-size: 1rem;
-    color: #e5e7eb;
+    margin-top: 1.5rem;
+    font-size: 0.875rem;
+    color: var(--text-muted);
+    text-align: center;
 }
 
 .href {
-    color: #fbbf24;
-    text-decoration: none;
-    font-weight: bold;
-    margin-left: 5px;
-    transition: color 0.3s ease;
+    color: var(--accent-bright);
+    font-weight: 600;
+    margin-left: 0.3rem;
+    transition: color var(--transition);
 }
 
 .href:hover {
-    color: #ffd966;
+    color: #fff;
+}
+
+@keyframes slideUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
 }

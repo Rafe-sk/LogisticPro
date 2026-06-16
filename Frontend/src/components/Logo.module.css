@@ -1,18 +1,24 @@
 .logoContainer {
-    display: flex; /* flex */
-    align-items: center; /* items-center */
-  }
-  
-  .logoIcon {
-    height: 2rem; /* h-8 */
-    width: 2rem; /* w-8 */
-    color: rgba(234, 179, 8, 1); /* text-yellow-400 */
-  }
-  
-  .logoText {
-    margin-left: 0.5rem; /* ml-2 */
-    font-size: 1.25rem; /* text-xl */
-    font-weight: 700; /* font-bold */
-    color: rgba(255, 255, 255, 1); /* text-white */
-  }
-  
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.logoIcon {
+    width: 28px;
+    height: 28px;
+    color: var(--accent);
+    filter: drop-shadow(0 0 8px var(--accent-glow));
+}
+
+.logoText {
+    font-size: 1.2rem;
+    font-weight: 800;
+    background: linear-gradient(135deg, var(--accent-bright), #f97316);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    letter-spacing: -0.02em;
+}

@@ -1,64 +1,60 @@
 .navLinksContainer {
-    display: none;
-    /* hidden */
-}
-
-@media (min-width: 768px) {
-
-    /* md:block */
-    .navLinksContainer {
-        display: block;
-    }
+    display: flex;
+    align-items: center;
 }
 
 .navLinks {
     display: flex;
-    /* flex */
-    align-items: center;
-    /* items-center */
-    gap: 2rem;
-    /* space-x-8 */
-}
-
-.navLink {
-    color: rgba(209, 213, 219, 1);
-    /* text-gray-300 */
-    text-decoration: none;
-    transition: color 0.2s;
-    /* hover effect */
-}
-
-.navLink:hover {
-    color: rgba(255, 255, 255, 1);
-    /* hover:text-white */
-}
-
-.contactButton {
-    background-color: rgba(234, 179, 8, 1);
-    /* bg-yellow-400 */
-    color: rgba(17, 24, 39, 1);
-    /* text-gray-900 */
-    padding: 0.5rem 1rem;
-    /* px-4 py-2 */
-    border-radius: 0.5rem;
-    /* rounded-lg */
-    font-weight: 500;
-    /* font-medium */
-    transition: background-color 0.2s;
-    /* hover effect */
-    border: none;
-    display: flex;
-    flex-direction: row;
     align-items: center;
     gap: 0.5rem;
 }
 
-.contactButton:hover {
-    background-color: rgba(250, 204, 21, 1);
-    /* hover:bg-yellow-300 */
+.navLink {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.5rem 1rem;
+    color: var(--text-secondary);
+    font-size: 0.875rem;
+    font-weight: 500;
+    border-radius: var(--radius-sm);
+    transition: color var(--transition), background-color var(--transition);
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.navLink:hover {
+    color: var(--accent);
+    background-color: var(--accent-dim);
+}
+
+.contactButton {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1.2rem;
+    background: linear-gradient(135deg, var(--accent), #d97706);
+    color: #0a0f1e;
+    font-size: 0.875rem;
+    font-weight: 700;
+    border: none;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    transition: transform var(--transition), box-shadow var(--transition), opacity var(--transition);
+    box-shadow: 0 4px 15px var(--accent-glow);
+    margin-left: 0.5rem;
 }
 
 .contactButton:hover {
-    background-color: rgba(250, 204, 21, 1);
-    /* hover:bg-yellow-300 */
+    transform: translateY(-1px);
+    box-shadow: 0 6px 20px rgba(245, 158, 11, 0.4);
+    opacity: 0.95;
+}
+
+.contactButton:active {
+    transform: translateY(0);
+}
+
+.contactIcon {
+    flex-shrink: 0;
 }

@@ -1,9 +1,13 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="LogisticPro Auth Suite" verbose="2">
 
-    <test name="Auth Tests">
+    <test name="UI Tests">
         <classes>
             <class name="com.logisticpro.AuthTest"/>
+            <class name="com.logisticpro.CreateOrderTest"/>
+            <class name="com.logisticpro.TrackingTest"/>
+            <class name="com.logisticpro.PasswordResetTest"/>
+            <class name="com.logisticpro.OrderCancellationTest"/>
         </classes>
     </test>
 

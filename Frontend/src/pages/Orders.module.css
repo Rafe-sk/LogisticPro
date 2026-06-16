@@ -1,0 +1,248 @@
+/* Orders.module.css */
+.container {
+    min-height: 100vh;
+    background:
+        radial-gradient(ellipse at 60% 10%, rgba(245, 158, 11, 0.05) 0%, transparent 50%),
+        var(--bg-primary);
+    padding: 5rem 2rem 3rem;
+}
+
+.pageHeader {
+    text-align: center;
+    margin-bottom: 2.5rem;
+    animation: fadeInDown 0.5s ease;
+}
+
+.pageTitle {
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--text-primary);
+    letter-spacing: -0.03em;
+    margin-bottom: 0.4rem;
+}
+
+.pageSubtitle {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+}
+
+/* Orders list */
+.ordersList {
+    max-width: 700px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.orderCard {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.25rem 1.5rem;
+    background: var(--bg-card);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-md);
+    transition: background var(--transition), border-color var(--transition), transform var(--transition);
+    cursor: pointer;
+    animation: slideUp 0.4s ease;
+}
+
+.orderCard:hover {
+    background: var(--bg-card-hover);
+    border-color: rgba(245, 158, 11, 0.2);
+    transform: translateX(4px);
+}
+
+.orderLeft {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.orderIcon {
+    width: 44px;
+    height: 44px;
+    background: var(--accent-dim);
+    border-radius: var(--radius-sm);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--accent-bright);
+    flex-shrink: 0;
+}
+
+.orderInfo {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.orderId {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    font-family: 'Courier New', monospace;
+}
+
+.orderDate {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+}
+
+.orderRight {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.statusBadge {
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 0.3rem 0.75rem;
+    border-radius: 100px;
+    font-size: 0.75rem;
+    font-weight: 700;
+}
+
+.badgePaid {
+    background: rgba(34, 197, 94, 0.1);
+    color: #4ade80;
+    border: 1px solid rgba(34, 197, 94, 0.3);
+}
+
+.badgePending {
+    background: rgba(245, 158, 11, 0.1);
+    color: var(--accent-bright);
+    border: 1px solid rgba(245, 158, 11, 0.3);
+}
+
+.badgeCancelled {
+    background: rgba(239, 68, 68, 0.1);
+    color: #fca5a5;
+    border: 1px solid rgba(239, 68, 68, 0.3);
+}
+
+.statusPaid { color: #4ade80; }
+.statusPending { color: var(--accent-bright); }
+.statusCancelled { color: #fca5a5; }
+
+.orderAmount {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    min-width: 60px;
+    text-align: right;
+}
+
+.cancelBtn {
+    background: rgba(239, 68, 68, 0.15);
+    border: 1px solid rgba(239, 68, 68, 0.3);
+    color: #fca5a5;
+    width: 32px;
+    height: 32px;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all var(--transition);
+    flex-shrink: 0;
+}
+
+.cancelBtn:hover:not(:disabled) {
+    background: rgba(239, 68, 68, 0.25);
+    border-color: rgba(239, 68, 68, 0.5);
+}
+
+.cancelBtn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.chevron {
+    color: var(--text-muted);
+    flex-shrink: 0;
+}
+
+/* Empty state */
+.emptyState {
+    text-align: center;
+    padding: 4rem 2rem;
+    max-width: 400px;
+    margin: 0 auto;
+    animation: slideUp 0.5s ease;
+}
+
+.emptyIcon {
+    color: var(--text-muted);
+    margin: 0 auto 1.5rem;
+    opacity: 0.5;
+}
+
+.emptyTitle {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+}
+
+.emptyText {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    margin-bottom: 1.5rem;
+}
+
+.ctaButton {
+    padding: 0.75rem 2rem;
+    background: linear-gradient(135deg, var(--accent), #d97706);
+    color: #0a0f1e;
+    font-weight: 700;
+    font-size: 0.9rem;
+    border: none;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    transition: transform var(--transition), box-shadow var(--transition);
+    box-shadow: 0 4px 15px var(--accent-glow);
+}
+
+.ctaButton:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(245, 158, 11, 0.4);
+}
+
+/* Loading */
+.loadingContainer {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    background: var(--bg-primary);
+    color: var(--text-muted);
+}
+
+.spinner {
+    width: 36px;
+    height: 36px;
+    border: 3px solid var(--border-subtle);
+    border-top-color: var(--accent);
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+@keyframes slideUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInDown {
+    from { opacity: 0; transform: translateY(-12px); }
+    to { opacity: 1; transform: translateY(0); }
+}

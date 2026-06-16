@@ -1,85 +1,108 @@
+/* TrackingForm.module.css */
 .container {
-    background-color: rgba(31, 41, 55, 0.5);
-    padding: 1.5rem;
-    border-radius: 0.5rem;
-    backdrop-filter: blur(4px);
+  animation: fadeInUp 0.6s ease 0.3s both;
 }
 
 .buttonGroup {
-    display: flex;
-    gap: 1rem;
-    margin-bottom: 1rem;
+  margin-bottom: 0.75rem;
 }
 
 .trackingButton {
-    background-color: #FBBF24;
-    color: #111827;
-    padding: 0.5rem 1.5rem;
-    border-radius: 0.5rem;
-    font-weight: 500;
-    border: none;
-}
-
-.rateButton {
-    color: #D1D5DB;
-    padding: 0.5rem 1.5rem;
+  padding: 0.4rem 1rem;
+  background: var(--accent-dim);
+  border: 1px solid rgba(245, 158, 11, 0.3);
+  border-radius: 100px;
+  color: var(--accent-bright);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  cursor: default;
 }
 
 .inputWrapper {
-    position: relative;
-    border: none;
+  display: flex;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  padding: 0 0.75rem;
+  transition: border-color var(--transition), box-shadow var(--transition);
+  max-width: 480px;
 }
 
-.input {
-    width: 100%;
-    background-color: rgba(55, 65, 81, 0.5);
-    color: white;
-    padding: 0.75rem 1rem;
-    padding-left: 2.5rem;
-    border-radius: 0.5rem;
-    border: none;
+.inputWrapper:focus-within {
+  border-color: var(--border-focus);
+  box-shadow: 0 0 0 3px var(--accent-glow);
+  background: rgba(245, 158, 11, 0.03);
 }
 
 .icon {
-    position: absolute;
-    left: 0.75rem;
-    top: 50%;
-    transform: translateY(-50%);
-    color: #9CA3AF;
-    height: 1.25rem;
-    width: 1.25rem;
+  width: 18px;
+  height: 18px;
+  color: var(--text-muted);
+  flex-shrink: 0;
+}
+
+.input {
+  flex: 1;
+  padding: 0.8rem 0.75rem;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: var(--text-primary);
+  font-size: 0.95rem;
+}
+
+.input::placeholder {
+  color: var(--text-muted);
 }
 
 .trackButton {
-    position: absolute;
-    right: 0.75rem;
-    top: 50%;
-    transform: translateY(-50%);
-    background-color: #FBBF24;
-    color: #111827;
-    padding: 0.25rem 1.5rem;
-    border-radius: 0.5rem;
-    font-weight: 500;
-    border: none;
+  padding: 0.55rem 1.25rem;
+  background: linear-gradient(135deg, var(--accent), #d97706);
+  color: #0a0f1e;
+  font-weight: 700;
+  font-size: 0.8rem;
+  letter-spacing: 0.06em;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: transform var(--transition), box-shadow var(--transition);
+  flex-shrink: 0;
+  box-shadow: 0 2px 10px var(--accent-glow);
 }
 
 .trackButton:hover {
-    background-color: #F59E0B;
+  transform: scale(1.04);
+  box-shadow: 0 4px 15px rgba(245, 158, 11, 0.4);
 }
 
 .helpText {
-    color: #9CA3AF;
-    margin-top: 0.75rem;
-    font-size: 0.875rem;
+  margin-top: 0.75rem;
+  font-size: 0.8rem;
+  color: var(--text-muted);
 }
 
 .helpLink {
-    color: #FBBF24;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  color: var(--accent-bright);
+  font-weight: 600;
+  margin-left: 0.25rem;
+  transition: color var(--transition);
+}
+
+.helpLink:hover {
+  color: #fff;
 }
 
 .arrowIcon {
-    display: inline;
-    height: 1rem;
-    width: 1rem;
-    margin-left: 0.25rem;
+  width: 14px;
+  height: 14px;
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
 }

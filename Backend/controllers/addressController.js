@@ -9,7 +9,7 @@ const createPickupAddress = async (req, res) => {
     }
     catch (err) {
         console.log(err);
-        return { message: "Some problem" };
+        return res.status(500).json({ message: "Some problem", error: err.message });
     }
 }
 
@@ -21,7 +21,7 @@ const createDeliveryAddress = async (req, res) => {
     }
     catch (err) {
         console.log(err);
-        return { message: "Some problem" };
+        return res.status(500).json({ message: "Some problem", error: err.message });
     }
 }
 
@@ -34,7 +34,7 @@ const getPickupAddress = async (req, res) => {
     }
     catch (err) {
         console.log(err);
-        return { message: "Some problem" };
+        return res.status(500).json({ message: "Some problem", error: err.message });
     }
 }
 
@@ -47,9 +47,88 @@ const getDeliveryAddress = async (req, res) => {
     }
     catch (err) {
         console.log(err);
-        return { message: "Some problem" };
+        return res.status(500).json({ message: "Some problem", error: err.message });
     }
 }
 
+const updatePickupAddress = async (req, res) => {
+    try {
+        const { addressId, ...updateData } = req.body;
+        if (!addressId) {
+            return res.status(400).json({ message: "Address ID is required" });
+        }
+        const updated = await pickupAddressModel.findByIdAndUpdate(
+            addressId,
+            { $set: updateData },
+            { new: true }
+        );
+        if (!updated) {
+            return res.status(404).json({ message: "Pickup address not found" });
+        }
+        res.status(200).json({ message: "Pickup address updated successfully", address: updated });
+    }
+    catch (err) {
+        console.log(err);
+        return res.status(500).json({ message: "Some problem" });
+    }
+}
 
-export { createPickupAddress, createDeliveryAddress, getPickupAddress, getDeliveryAddress };
+const deletePickupAddress = async (req, res) => {
+    try {
+        const addressId = req.body.addressId;
+        if (!addressId) {
+            return res.status(400).json({ message: "Address ID is required" });
+        }
+        const deleted = await pickupAddressModel.findByIdAndDelete(addressId);
+        if (!deleted) {
+            return res.status(404).json({ message: "Pickup address not found" });
+        }
+        res.status(200).json({ message: "Pickup address deleted successfully" });
+    }
+    catch (err) {
+        console.log(err);
+        return res.status(500).json({ message: "Some problem" });
+    }
+}
+
+const updateDeliveryAddress = async (req, res) => {
+    try {
+        const { addressId, ...updateData } = req.body;
+        if (!addressId) {
+            return res.status(400).json({ message: "Address ID is required" });
+        }
+        const updated = await deliveryAddressModel.findByIdAndUpdate(
+            addressId,
+            { $set: updateData },
+            { new: true }
+        );
+        if (!updated) {
+            return res.status(404).json({ message: "Delivery address not found" });
+        }
+        res.status(200).json({ message: "Delivery address updated successfully", address: updated });
+    }
+    catch (err) {
+        console.log(err);
+        return res.status(500).json({ message: "Some problem" });
+    }
+}
+
+const deleteDeliveryAddress = async (req, res) => {
+    try {
+        const addressId = req.body.addressId;
+        if (!addressId) {
+            return res.status(400).json({ message: "Address ID is required" });
+        }
+        const deleted = await deliveryAddressModel.findByIdAndDelete(addressId);
+        if (!deleted) {
+            return res.status(404).json({ message: "Delivery address not found" });
+        }
+        res.status(200).json({ message: "Delivery address deleted successfully" });
+    }
+    catch (err) {
+        console.log(err);
+        return res.status(500).json({ message: "Some problem" });
+    }
+}
+
+export { createPickupAddress, createDeliveryAddress, getPickupAddress, getDeliveryAddress, updatePickupAddress, deletePickupAddress, updateDeliveryAddress, deleteDeliveryAddress };

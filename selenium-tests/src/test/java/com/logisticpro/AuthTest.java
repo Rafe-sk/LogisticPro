@@ -97,9 +97,9 @@ public class AuthTest {
         driver.findElement(By.cssSelector("input[name='password']"))
             .sendKeys(TEST_PASSWORD);
 
-        // 3. Click Sign Up button
-        driver.findElement(By.xpath("//button[normalize-space(text())='Sign Up']")).click();
-        System.out.println("[SIGNUP] Clicked Sign Up ✓");
+        // 3. Click Create Account button (id=register-btn, text='Create Account')
+        wait.until(ExpectedConditions.elementToBeClickable(By.id("register-btn"))).click();
+        System.out.println("[SIGNUP] Clicked Create Account ✓");
 
         // 4. Wait for redirect to /profileSetup
         wait.until(ExpectedConditions.urlContains("/profileSetup"));
@@ -120,8 +120,12 @@ public class AuthTest {
         driver.findElement(By.cssSelector("input[name='state']")).sendKeys(PROFILE_STATE);
         System.out.println("[SIGNUP] Profile form filled ✓");
 
-        // 6. Submit
-        driver.findElement(By.xpath("//button[normalize-space(text())='Submit']")).click();
+        // 6. Submit (id=profile-submit, text='Save & Continue →')
+        // Scroll into view first — fixed navbar can intercept the click otherwise
+        WebElement submitBtn = wait.until(ExpectedConditions.presenceOfElementLocated(By.id("profile-submit")));
+        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView({block:'center'});", submitBtn);
+        Thread.sleep(300); // brief pause for scroll to complete
+        wait.until(ExpectedConditions.elementToBeClickable(submitBtn)).click();
         System.out.println("[SIGNUP] Submitted profile ✓");
 
         // 7. Give backend time to write to MongoDB
@@ -151,8 +155,8 @@ public class AuthTest {
           dependsOnMethods = "testSignupAndProfileSetup")
     public void testLogin() {
 
-        // 1. Open Login page
-        driver.get(FRONTEND_URL + "/");
+        // 1. Open Login page (now at /login — home page is public landing)
+        driver.get(FRONTEND_URL + "/login");
         System.out.println("\n[LOGIN] Email: " + TEST_EMAIL);
 
         // 2. Fill credentials
@@ -161,9 +165,9 @@ public class AuthTest {
         driver.findElement(By.cssSelector("input[name='password']"))
             .sendKeys(TEST_PASSWORD);
 
-        // 3. Click Login
-        driver.findElement(By.xpath("//button[normalize-space(text())='Login']")).click();
-        System.out.println("[LOGIN] Clicked Login ✓");
+        // 3. Click Sign In (button text changed from 'Login' to 'Sign In')
+        driver.findElement(By.xpath("//button[normalize-space(text())='Sign In']")).click();
+        System.out.println("[LOGIN] Clicked Sign In ✓");
 
         // 4. Wait for /home
         wait.until(ExpectedConditions.urlContains("/home"));

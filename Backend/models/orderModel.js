@@ -12,6 +12,15 @@ const orderSchema = mongoose.Schema({
         default: function() {
             return 'ORD' + Math.random().toString(36).substr(2, 9); // Generate unique order ID
         }
+    },
+    status: {
+        type: String,
+        enum: ['created', 'confirmed', 'picked', 'intransit', 'delivered', 'cancelled'],
+        default: 'created'
+    },
+    totalAmount: {
+        type: Number,
+        default: 0
     }
 }, {timestamps: true});
 

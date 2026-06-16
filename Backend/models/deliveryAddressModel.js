@@ -1,39 +1,52 @@
 import mongoose from "mongoose";
 
 const deliveryAddressSchema = mongoose.Schema({
-    orderID:{
-        type:String,
-        required: true,
-    },
-    address:{
+    orderID: {
         type: String,
         required: true,
     },
-    contact:{
+    recipientName: {
+        type: String,
+        default: ''
+    },
+    address: {
         type: String,
         required: true,
     },
-    city:{
+    landmark: {
+        type: String,
+        default: ''
+    },
+    contact: {
         type: String,
         required: true,
     },
-    pincode:{
+    city: {
+        type: String,
+        required: true,
+    },
+    pincode: {
         type: Number,
         required: true,
     },
-    state:{
+    state: {
         type: String,
         required: true,
     },
-    saveAddress:{
+    addressType: {
+        type: String,
+        enum: ['home', 'office'],
+        default: 'home'
+    },
+    deliveryInstructions: {
+        type: String,
+        default: ''
+    },
+    saveAddress: {
         type: Boolean,
         default: false
-    },
-    addressType:{
-        type: String,
-        default: 'work'
     }
-}, {timestamps: true});
+}, { timestamps: true });
 
 const deliveryAddressModel = mongoose.model('deliveryAddress', deliveryAddressSchema);
 

@@ -1,92 +1,319 @@
 /* CreateParcel.module.css */
 .container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-    background-color: #111827;
-    color: white;
-    padding: 20px;
-    row-gap: 10px;
+    min-height: 100vh;
+    background:
+        radial-gradient(ellipse at 70% 20%, rgba(245, 158, 11, 0.06) 0%, transparent 50%),
+        var(--bg-primary);
+    padding: 5rem 2rem 3rem;
 }
 
-.form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background-color: #fbbf24;
-    border-radius: 20px;
-    padding: 20px;
-    width: 80%;
-    max-width: 1200px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+.pageHeader {
+    text-align: center;
+    margin-bottom: 2rem;
+    animation: fadeInDown 0.5s ease;
 }
 
-.form h2 {
-    color: #111827;
+.pageTitle {
     font-size: 2rem;
-    margin-bottom: 20px;
+    font-weight: 800;
+    color: var(--text-primary);
+    letter-spacing: -0.03em;
+    margin-bottom: 0.4rem;
 }
 
-.label {
-    font-weight: 500;
-    font-size: 1rem;
-    margin-bottom: 10px;
-    color: #e5e7eb;
+.pageSubtitle {
+    color: var(--text-muted);
+    font-size: 0.95rem;
 }
 
-.input,
-.select,
-.textarea {
-    width: 100%;
-    padding: 10px 15px;
-    border: 2px solid #e5e7eb;
-    border-radius: 10px;
-    background: rgba(255, 255, 255, 0.9);
-    transition: border-color 0.3s ease, background-color 0.3s ease;
-    font-size: 1rem;
-    color: #1f2937;
-    margin-bottom: 20px;
-}
-
-.input:focus,
-.select:focus,
-.textarea:focus {
-    border-color: #fbbf24;
-    background-color: #fff;
-    outline: none;
-}
-
-.textarea {
-    height: 120px;
-    resize: none;
-}
-
-.checkbox {
-    margin-bottom: 20px;
-}
-
-.button {
+.orderBadge {
     display: inline-block;
-    padding: 10px 20px;
-    border-radius: 10px;
-    background: #fbbf24;
-    color: white;
-    font-weight: 600;
-    font-size: 1rem;
-    border: none;
-    cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.2s ease;
+    margin-top: 0.75rem;
+    padding: 0.4rem 1rem;
+    background: var(--accent-dim);
+    border: 1px solid rgba(245, 158, 11, 0.3);
+    border-radius: 100px;
+    font-size: 0.8rem;
+    color: var(--accent-bright);
 }
 
-.button:hover {
-    background: #d97706;
+.errorBox {
+    max-width: 600px;
+    margin: 0 auto 1.5rem;
+    padding: 0.75rem 1.25rem;
+    background: rgba(239, 68, 68, 0.1);
+    border: 1px solid rgba(239, 68, 68, 0.3);
+    border-radius: var(--radius-sm);
+    color: #fca5a5;
+    font-size: 0.875rem;
+}
+
+.formCard {
+    max-width: 600px;
+    margin: 0 auto;
+    background: var(--bg-card);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-lg);
+    padding: 2rem;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+    animation: slideUp 0.5s ease;
+}
+
+.section {
+    margin-bottom: 1.75rem;
+}
+
+.sectionLabel {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin-bottom: 0.75rem;
+}
+
+.sectionLabel svg {
+    color: var(--accent);
+}
+
+/* Parcel type grid */
+.typeGrid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 0.5rem;
+}
+
+@media (max-width: 480px) {
+    .typeGrid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+.typeOption {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.75rem 0.5rem;
+    background: rgba(255, 255, 255, 0.03);
+    border: 2px solid var(--border-subtle);
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    transition: border-color var(--transition), background var(--transition), transform var(--transition);
+}
+
+.typeOption:hover {
+    background: var(--bg-card-hover);
     transform: translateY(-2px);
 }
 
-@media screen and (max-width: 768px) {
-    .form {
-        width: 90%;
-    }
+.typeSelected {
+    border-color: var(--accent);
+    background: var(--accent-dim);
+}
+
+.typeIcon {
+    font-size: 1.5rem;
+}
+
+.typeLabel {
+    font-size: 0.7rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+    text-align: center;
+}
+
+.typeSelected .typeLabel {
+    color: var(--accent-bright);
+}
+
+/* Inputs */
+.input {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-sm);
+    color: var(--text-primary);
+    font-size: 0.95rem;
+    transition: border-color var(--transition), box-shadow var(--transition), background var(--transition);
+}
+
+.input:focus {
+    outline: none;
+    border-color: var(--border-focus);
+    background: rgba(245, 158, 11, 0.04);
+    box-shadow: 0 0 0 3px var(--accent-glow);
+}
+
+.input::placeholder {
+    color: var(--text-muted);
+}
+
+.dimensionsGrid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 0.75rem;
+}
+
+.dimLabel {
+    display: block;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    margin-bottom: 0.4rem;
+}
+
+/* Fragile toggle */
+.fragileToggle {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    cursor: pointer;
+}
+
+.checkbox {
+    display: none;
+}
+
+.toggleTrack {
+    width: 44px;
+    height: 24px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 100px;
+    border: 2px solid var(--border-subtle);
+    position: relative;
+    transition: background var(--transition), border-color var(--transition);
+    flex-shrink: 0;
+}
+
+.toggleTrack[data-checked='true'] {
+    background: var(--accent);
+    border-color: var(--accent);
+}
+
+.toggleThumb {
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    width: 16px;
+    height: 16px;
+    background: white;
+    border-radius: 50%;
+    transition: transform var(--transition);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.toggleTrack[data-checked='true'] .toggleThumb {
+    transform: translateX(20px);
+}
+
+.toggleLabel {
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.toggleDesc {
+    display: block;
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    margin-top: 0.1rem;
+}
+
+/* Textarea */
+.textarea {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-sm);
+    color: var(--text-primary);
+    font-size: 0.95rem;
+    resize: vertical;
+    transition: border-color var(--transition), box-shadow var(--transition);
+}
+
+.textarea:focus {
+    outline: none;
+    border-color: var(--border-focus);
+    background: rgba(245, 158, 11, 0.04);
+    box-shadow: 0 0 0 3px var(--accent-glow);
+}
+
+.textarea::placeholder {
+    color: var(--text-muted);
+}
+
+/* Actions row */
+.actions {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-top: 1.75rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--border-subtle);
+}
+
+.secondaryBtn {
+    padding: 0.75rem 1.5rem;
+    background: transparent;
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-sm);
+    color: var(--text-secondary);
+    font-size: 0.875rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: border-color 0.2s, color 0.2s;
+    flex-shrink: 0;
+}
+
+.secondaryBtn:hover {
+    border-color: var(--text-muted);
+    color: var(--text-primary);
+}
+
+/* Submit button */
+.button {
+    flex: 1;
+    padding: 0.85rem 2rem;
+    background: linear-gradient(135deg, var(--accent), #d97706);
+    color: #0a0f1e;
+    font-weight: 700;
+    font-size: 0.95rem;
+    border: none;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    transition: transform var(--transition), box-shadow var(--transition);
+    box-shadow: 0 4px 20px var(--accent-glow);
+}
+
+.button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(245, 158, 11, 0.4);
+}
+
+.button:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+    transform: none;
+}
+
+@keyframes slideUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInDown {
+    from { opacity: 0; transform: translateY(-12px); }
+    to { opacity: 1; transform: translateY(0); }
 }
