@@ -1,0 +1,108 @@
+Started by an SCM change
+Started by user Rafe Shaikh
+
+Running as SYSTEM
+Building in workspace /Users/rafeshaikh/.jenkins/workspace/logisticpro
+The recommended git tool is: NONE
+No credentials specified
+ > git rev-parse --resolve-git-dir /Users/rafeshaikh/.jenkins/workspace/logisticpro/.git # timeout=10
+Fetching changes from the remote Git repository
+ > git config remote.origin.url https://github.com/Rafe-sk/LogisticPro # timeout=10
+Fetching upstream changes from https://github.com/Rafe-sk/LogisticPro
+ > git --version # timeout=10
+ > git --version # 'git version 2.53.0'
+ > git fetch --tags --force --progress -- https://github.com/Rafe-sk/LogisticPro +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git rev-parse refs/remotes/origin/main^{commit} # timeout=10
+Checking out Revision 9839efadb2631bbaf05e75b7e1bc0ad5d2be1711 (refs/remotes/origin/main)
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f 9839efadb2631bbaf05e75b7e1bc0ad5d2be1711 # timeout=10
+Commit message: "docs: add root README with full test documentation and update JMeter README"
+ > git rev-list --no-walk 87712a4586d81d514b32f61b26aa3a35a14ce5fc # timeout=10
+[logisticpro] $ mvn -f selenium-tests/pom.xml -Dmaven.test.failure.ignore=true clean test
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] -------------------< com.logisticpro:selenium-tests >-------------------
+[INFO] Building LogisticPro Selenium Tests 1.0.0
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- clean:3.2.0:clean (default-clean) @ selenium-tests ---
+[INFO] Deleting /Users/rafeshaikh/.jenkins/workspace/logisticpro/selenium-tests/target
+[INFO] 
+[INFO] --- resources:3.4.0:resources (default-resources) @ selenium-tests ---
+[INFO] skip non existing resourceDirectory /Users/rafeshaikh/.jenkins/workspace/logisticpro/selenium-tests/src/main/resources
+[INFO] 
+[INFO] --- compiler:3.15.0:compile (default-compile) @ selenium-tests ---
+[INFO] No sources to compile
+[INFO] 
+[INFO] --- resources:3.4.0:testResources (default-testResources) @ selenium-tests ---
+[INFO] Copying 1 resource from src/test/resources to target/test-classes
+[INFO] 
+[INFO] --- compiler:3.15.0:testCompile (default-testCompile) @ selenium-tests ---
+[INFO] Recompiling the module because of changed source code.
+[INFO] Compiling 6 source files with javac [debug target 17] to target/test-classes
+[WARNING] system modules path not set in conjunction with -source 17
+[INFO] 
+[INFO] --- surefire:3.5.2:test (default-test) @ selenium-tests ---
+[INFO] Using auto detected provider org.apache.maven.surefire.testng.TestNGProvider
+[INFO] 
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running TestSuite
+SLF4J(W): No SLF4J providers were found.
+SLF4J(W): Defaulting to no-operation (NOP) logger implementation
+SLF4J(W): See https://www.slf4j.org/codes.html#noProviders for further details.
+...
+... TestNG 7.10.2 by Cédric Beust (cedric@beust.com)
+...
+
+Jun 19, 2026 3:10:06 PM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
+WARNING: Unable to find CDP implementation matching 149
+Jun 19, 2026 3:10:06 PM org.openqa.selenium.chromium.ChromiumDriver lambda$new$5
+WARNING: Unable to find version of CDP to use for 149.0.7827.115. You may need to include a dependency on a specific version of the CDP using something similar to `org.seleniumhq.selenium:selenium-devtools-v86:4.27.0` where the version ("v86") matches the version of the chromium-based browser you're using and the version number of the artifact is the same as Selenium's.
+
+[SIGNUP] Email: java_4cd18b@mailtest.com
+[SIGNUP] Clicked Create Account ✓
+[SIGNUP] Redirected to /profileSetup ✓
+[SIGNUP] Profile form filled ✓
+[SIGNUP] Submitted profile ✓
+[SIGNUP] MongoDB verified ✓  _id=6a350e77ad783f12a15fe930
+
+[LOGIN] Email: java_4cd18b@mailtest.com
+[LOGIN] Clicked Sign In ✓
+[LOGIN] Redirected to http://localhost:5173/home ✓
+Jun 19, 2026 3:10:13 PM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
+WARNING: Unable to find CDP implementation matching 149
+Jun 19, 2026 3:10:13 PM org.openqa.selenium.chromium.ChromiumDriver lambda$new$5
+WARNING: Unable to find version of CDP to use for 149.0.7827.115. You may need to include a dependency on a specific version of the CDP using something similar to `org.seleniumhq.selenium:selenium-devtools-v86:4.27.0` where the version ("v86") matches the version of the chromium-based browser you're using and the version number of the artifact is the same as Selenium's.
+Jun 19, 2026 3:10:21 PM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
+WARNING: Unable to find CDP implementation matching 149
+Jun 19, 2026 3:10:21 PM org.openqa.selenium.chromium.ChromiumDriver lambda$new$5
+WARNING: Unable to find version of CDP to use for 149.0.7827.115. You may need to include a dependency on a specific version of the CDP using something similar to `org.seleniumhq.selenium:selenium-devtools-v86:4.27.0` where the version ("v86") matches the version of the chromium-based browser you're using and the version number of the artifact is the same as Selenium's.
+Jun 19, 2026 3:10:31 PM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
+WARNING: Unable to find CDP implementation matching 149
+Jun 19, 2026 3:10:31 PM org.openqa.selenium.chromium.ChromiumDriver lambda$new$5
+WARNING: Unable to find version of CDP to use for 149.0.7827.115. You may need to include a dependency on a specific version of the CDP using something similar to `org.seleniumhq.selenium:selenium-devtools-v86:4.27.0` where the version ("v86") matches the version of the chromium-based browser you're using and the version number of the artifact is the same as Selenium's.
+Jun 19, 2026 3:10:37 PM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
+WARNING: Unable to find CDP implementation matching 149
+Jun 19, 2026 3:10:37 PM org.openqa.selenium.chromium.ChromiumDriver lambda$new$5
+WARNING: Unable to find version of CDP to use for 149.0.7827.115. You may need to include a dependency on a specific version of the CDP using something similar to `org.seleniumhq.selenium:selenium-devtools-v86:4.27.0` where the version ("v86") matches the version of the chromium-based browser you're using and the version number of the artifact is the same as Selenium's.
+[INFO] Tests run: 6, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 40.66 s -- in TestSuite
+[INFO] 
+[INFO] Results:
+[INFO] 
+[INFO] Tests run: 6, Failures: 0, Errors: 0, Skipped: 0
+[INFO] 
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  42.393 s
+[INFO] Finished at: 2026-06-19T15:10:45+05:30
+[INFO] ------------------------------------------------------------------------
+TestNG Reports Processing: START
+Looking for TestNG results report in workspace using pattern: **/testng-results.xml
+Saving reports...
+Processing '/Users/rafeshaikh/.jenkins/jobs/logisticpro/builds/10/testng/testng-results.xml'
+TestNG Reports Processing: FINISH
+Finished: SUCCESS
